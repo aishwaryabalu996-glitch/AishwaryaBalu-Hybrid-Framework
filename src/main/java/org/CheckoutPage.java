@@ -13,7 +13,7 @@ public class CheckoutPage extends BasePage {
                 By.xpath("//textarea[@name='message']");
 
         private final By placeOrder =
-                By.xpath("//a[contains(text(),'Place Order')]");
+                By.xpath("//a[contains(normalize-space(),'Place Order')]");
 
         public CheckoutPage(WebDriver driver) {
             super(driver);
@@ -21,6 +21,10 @@ public class CheckoutPage extends BasePage {
 
         public boolean isAddressDisplayed() {
             return isDisplayed(deliveryAddress);
+        }
+
+        public String getDeliveryAddress() {
+            return getText(deliveryAddress);
         }
 
         public CheckoutPage enterOrderComment() {

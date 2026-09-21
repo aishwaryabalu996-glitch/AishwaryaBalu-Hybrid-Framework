@@ -26,6 +26,7 @@ public class AishwaryaHybridTest extends Hooks {
         );
 
         homePage = loginPage.clickLogin();
+        System.out.println("Logged in URL: " + driver.getCurrentUrl());
 
         Assert.assertTrue(
                 homePage.isLoggedIn(),
@@ -56,15 +57,11 @@ public class AishwaryaHybridTest extends Hooks {
         // 4. CART
         // =========================================
 
-        CartPage cartPage =
-                new CartPage(driver);
+        CartPage cartPage = new CartPage(driver);
 
         cartPage.clickViewCart();
 
-        Assert.assertTrue(
-                cartPage.isProductDisplayed(),
-                "Product is not displayed in cart"
-        );
+        Assert.assertTrue(cartPage.isProductDisplayed(), "Product is not displayed in cart");
 
         // =========================================
         // 5. CHECKOUT
@@ -113,9 +110,6 @@ public class AishwaryaHybridTest extends Hooks {
         // 7. ORDER CONFIRMATION
         // =========================================
 
-        Assert.assertTrue(
-                paymentPage.isOrderPlaced(),
-                "Order was not placed successfully"
-        );
+        Assert.assertTrue(paymentPage.isOrderPlaced(), "Order was not placed successfully");
     }
 }
